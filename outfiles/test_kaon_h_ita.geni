@@ -1,0 +1,19 @@
+ HRSr Trials:               1169709
+ Slit hor/vert                15432      830133
+ Q1 entrance/mid/exit             0           0        3734
+ Q2 entrance/mid/exit             0           0           0
+ Dipole entrance/exit         16351      188336
+ Q3 entrance/mid/exit         10259       24779       20057
+ Events reaching hut          60628
+ VDC1, VDC2                       0           0
+ S1, S2, Cal	               0           0           0
+
+ HRSl Trials:                 60628
+ Slit hor/vert                 8747       38874
+ Q1 entrance/mid/exit             0           0         125
+ Q2 entrance/mid/exit             0           0           0
+ Dipole entrance/exit           466        1193
+ Q3 entrance/mid/exit            77         334         812
+ Events reaching hut          10000
+ VDC1, VDC2                       0           0
+ S1, S2, Cal	               0           0           0
