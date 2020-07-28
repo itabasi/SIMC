@@ -14,7 +14,7 @@
      doing_phsp  =  F					!  (T = TRUE)	- If all of the doing_* are
      doing_kaon  =  T					!  (T = TRUE)   false, then doing (e,e'p).
      doing_pion  =  F					!  (T = TRUE)
-     doing_decay  =  F					!  1=decay ON, 0=decay OFF.
+     doing_decay  =  T					!  1=decay ON, 0=decay OFF.
      ctau  =  371.3					!  decay length (cm)
      extra_dbase_file = 'extra_kaon.data' 		!  additional input parameters.
      use_sf = F						!  Use spectral function
