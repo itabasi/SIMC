@@ -1,0 +1,7 @@
+
+
+rootfiles/*
+*.root
+make_root_tmp.dat
+worksim/*
+./deut_laget/*

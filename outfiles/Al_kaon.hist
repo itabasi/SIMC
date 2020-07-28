@@ -1,0 +1,182 @@
+
+ BEGIN Time: Mon Jan 27 00:42:49 2020      
+ END Time:   Mon Jan 27 00:43:05 2020      
+ KINEMATICS:
+               ****--------  A(e,e'K)  --------****
+               ****---- producing a LAMBDA ----****
+                Ebeam =       4318.5000         MeV
+           (dE/E)beam =          0.0005  (full wid)
+              x-width =          0.0089          cm
+              y-width =          0.0042          cm
+           fr_pattern =               1   1=square,2=circ
+                  fr1 =          0.1500          cm
+                  fr2 =          0.1500          cm
+  
+                             ____E arm____    ____P arm____
+                angle =         13.2000          13.2000      deg
+             momentum =       2100.0000        1820.0000    MeV/c
+             x offset =          0.0000           0.0000       cm
+             y offset =          0.0000           0.0000       cm
+             z offset =          0.0000           0.0000       cm
+         xptar offset =          0.0000           0.0000       mr
+         yptar offset =          0.0000           0.0000       mr
+                       VALUES FOR "CENTRAL" EVENT:
+                delta =          0.0000           0.0000        %
+                xptar =          0.0000           0.0000       mr
+                yptar =          0.0000           0.0000       mr
+                         Q2 =          0.4792  (GeV/c)^2
+                          q =       2323.9239      MeV/c
+                         nu =       2218.4257        MeV
+                   recon Em =       1270.9311        MeV
+                   recon Pm =        506.0519      MeV/c
+                   recon  W =       2136.3801      MeV/c
+                   recon MM =       1165.8376      MeV/c
+ TARGET specs:
+                A = 0.260000E+02                    Z = 0.130000E+02      
+             mass = 0.100728E+01   amu           mass = 0.938272E+03   MeV
+             Mrec = 0.000000E+00   amu           Mrec = 0.000000E+00   MeV
+       Mtar_struc = 0.938272E+03   MeV     Mrec_struc = 0.111568E+04   MeV
+              rho = 0.340400E-02 g/cm3          thick = 0.851000E-01 g/cm2
+            angle = 0.000000E+00   deg      abundancy = 0.100000E+03     %
+               X0 = 0.231376E+02 g/cm2          X0_cm = 0.679719E+04    cm
+           length = 0.250000E+02    cm        zoffset = 0.000000E+00    cm
+          xoffset = 0.000000E+00    cm        yoffset = 0.000000E+00    cm
+                   __ave__         __lo__         __hi__
+         Coulomb        5.47740        5.47740        5.47740     MeV
+      Eloss_beam        0.07430        0.00000        0.25111     MeV
+         Eloss_e        0.26587        0.15164        0.61264     MeV
+         Eloss_p        0.22632        0.12665        0.57720     MeV
+       teff_beam        0.00184        0.00000        0.00368  radlen
+          teff_e        0.00698        0.00509        0.00891  radlen
+          teff_p        0.00698        0.00509        0.00891  radlen
+   musc_nsig_max                3.50000        
+   musc_max_beam                0.52526      mr
+      musc_max_e                1.84098      mr
+      musc_max_p                2.22326      mr
+ FLAGS:
+                 doing_eep= F           doing_kaon= T           doing_pion= F
+                doing_semi= F            doing_rho= F          doing_hplus= T
+              doing_semipi= F         doing_semika= F
+               doing_delta= F           doing_phsp= F
+                which_pion= 0           which_kaon= 0
+           doing_hyd_elast= F      doing_deuterium= F          doing_heavy= F
+               doing_hydpi= F         doing_deutpi= F           doing_hepi= F
+             doing_hydkaon= F       doing_deutkaon= F         doing_hekaon= T
+             doing_hydsemi= F       doing_deutsemi= F             do_fermi= F
+              doing_hydrho= F        doing_deutrho= F          doing_herho= F
+                  mc_smear= T         electron_arm= 4           hadron_arm= 3
+               using_Eloss= T        using_Coulomb= T        deForest_flag= F
+             correct_Eloss= F       correct_raster= T          doing_decay= F
+       using_E_arm_monteca= T  using_P_arm_monteca= T
+               use_sf= F
+              ctau=   371.300  cm
+ COUNTERS:
+            Ngen (request) =      10000
+            Ntried         =     394480
+            Ncontribute    =      10000
+            Nco_no_rad_prot=      10000
+            -> %no_rad_prot=    100.000
+
+ INTEGRATED WEIGHTS (number of counts in delta/Em cuts!):
+               MeV: wtcontr=   0.32752923E+00
+ RADIATIVE CORRECTIONS:
+      use_expon=  F   include_hard=  T    calc_spence=  T
+      using_rad=  T use_offshell_r=  T
+       rad_flag=  0    extrad_flag=  2       one_tail= -3    intcor_mode=  1
+   dE_edge_test=      0.000
+     Egamma_max=    348.795
+ Central Values:
+         hardcorfac =       0.939
+            etatzai =       1.358
+          frac(1:3) =       0.476      0.524      0.000
+        lambda(1:3) =       0.033      0.030      0.000
+            bt(1:2) =       0.002      0.009
+         c_int(0:3) =       0.038      0.025      0.023      0.000
+         c_ext(0:3) =       0.011      0.002      0.009      0.000
+             c(0:3) =       0.041      0.027      0.029      0.000
+              g_int =       0.062
+              g_ext =       0.012
+             g(0:3) =       0.074      0.035      0.039      0.000
+ MISCELLANEOUS:
+ Note that central.sigcc is for central delta,theta,phi in both spectrometers
+  and may give non-physical kinematics, esp. for Hydrogen
+ Note also that AVE.sigcc is really AVER.weight (the two arenot exactly equal)
+             CENTRAL.sigcc =     0.267498E-06       
+             AVERAGE.sigcc =     0.858726E-06       
+                    charge =     0.100000E+01     mC
+                 targetfac =     0.314869E-08       
+                luminosity =     0.317592E+09  ub^-1
+                luminosity =     0.123664E+04  GeV^2
+                    genvol =     0.343873E-01       
+                   normfac =     0.276849E+06       
+ RECON SUMMARY:            Ave.Error   Resolution
+   Electron arm: delta =     0.07811     0.57235  x10^-3
+                 xptar =     0.14099     3.52827  mr
+                 yptar =     0.00215     0.75974  mr
+                 ytar  =     0.00452     1.35481  mm
+   Hadron arm:   delta =     0.07784     0.58993  x10-3
+                 xptar =     0.04338     3.80251  mr
+                 yptar =     0.00922     0.90722  mr
+                 ytar  =    -0.00084     1.45987  mm
+ Input Spectrometer Limits:
+            SPedge.e.delta.min/max =           -5.0000           5.0000    %
+            SPedge.e.yptar.min/max =           -0.0350           0.0350  rad
+            SPedge.e.xptar.min/max =           -0.0650           0.0650  rad
+            SPedge.p.delta.min/max =           -5.0000           5.0000    %
+            SPedge.p.yptar.min/max =           -0.0350           0.0350  rad
+            SPedge.p.xptar.min/max =           -0.0650           0.0650  rad
+ Limiting VERTEX values (vertex.e/p.*,Em,Pm,Trec)
+    USED limits are gen.e/p.*, and VERTEXedge.Em,Pm,Trec
+                          ______used______         _____found______
+                               min       max             lo        hi
+       E arm  delta       -4.732      11.877         -4.651     5.345      %
+       E arm  yptar      -36.841      36.841        -34.674    35.923     mr
+       E arm  xptar      -66.841      66.841        -62.206    62.152     mr
+       P arm  delta       -4.993       5.033         -4.896     5.541      %
+       P arm  yptar      -37.223      37.223        -36.240    34.770     mr
+       P arm  xptar      -67.223      67.223        -62.687    62.698     mr
+            sumEgen     2000.629    2349.424       2001.612  2211.736    MeV
+               Trec        0.000     790.000          0.001   221.034    MeV
+                 Em        0.000     397.500         15.000   123.030    MeV
+                 Pm        0.000     790.000          0.296   239.942  MeV/c
+       *** NOTE: sumEgen.min only used in GENERATE_RAD
+ Limiting ORIGINAL values: orig.e/p.*,Em,Pm,Trec (no edge.* limits for Pm,Trec)
+                          ______used______         _____found______
+                               min       max             lo        hi
+          E arm   E     2000.629    2211.090       2002.337  2212.235    MeV
+       E arm  yptar      -36.841      36.841        -34.674    35.923     mr
+       E arm  xptar      -66.841      66.841        -62.206    62.152     mr
+       P arm      E     1798.225    1974.314       1799.911  1983.266    MeV
+       P arm  yptar      -37.223      37.223        -36.240    34.770     mr
+       P arm  xptar      -67.223      67.223        -62.687    62.698     mr
+                 Em  -999999.999  999999.999         13.936   123.800    MeV
+                 Pm        0.000       0.000          0.296   239.942    MeV
+               Trec        0.000       0.000          0.001   221.034    MeV
+ Limiting SPECTROMETER values
+                          ______used______         _____found______
+                               min       max             lo        hi
+        E arm delta       -5.000       5.000         -4.921     5.075      %
+       E arm  yptar      -35.000      35.000        -35.208    35.737     mr
+       E arm  xptar      -65.000      65.000        -61.758    61.688     mr
+       P arm  delta       -5.000       5.000         -4.911     5.524      %
+       P arm  yptar      -35.000      35.000        -35.756    34.302     mr
+       P arm  xptar      -65.000      65.000        -62.149    62.431     mr
+ Limiting RADIATION values CONTRIBUTING to the (Em,Pm) distributions:
+                          ______used______         _____found______
+                               min       max             lo        hi
+          Egamma(1)        0.000     348.795          0.000   132.927    MeV
+          Egamma(2)        0.000     348.795          0.000   158.957    MeV
+          Egamma(3)        0.000       0.000          0.000     0.000    MeV
+       Egamma_total        0.000     348.795          0.000   158.957    MeV
+ ACTUAL and LIMITING SLOP values used/obtained:
+                          __used__   __min__   __max__
+  slop.MC   E arm delta      0.500    -0.245     0.342      %
+            E arm yptar      5.000    -3.067     2.976     mr
+            E arm xptar      5.000   -16.656    16.136     mr
+            P arm delta      0.500    -0.237     0.444      %
+            P arm yptar      5.000    -3.106     2.787     mr
+            P arm xptar      5.000   -17.450    14.667     mr
+ slop.total          Em      0.000     0.000  1434.904    MeV
+                     Pm      0.000     0.000   651.500  MeV/c
+
+
