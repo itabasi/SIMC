@@ -155,13 +155,14 @@ C momentum.  Get particle momentum from main%SP%p%delta
 	    zaero = -183.		!aero at 130cm,last project=313(S2)
 	  else if (hadron_arm.eq.4) then
 	    zaero = -183.
-	  endif
-	  pathlen = main%FP%p%path + zaero*(1+main%FP%p%dx**2+main%FP%p%dy**2)
-	  p_kaon = spec%p%P*(1.+main%SP%p%delta/100.)
-	  betak = spec%p%P/sqrt(spec%p%P**2+Mh2)
-	  gammak = 1./sqrt(1.-betak**2)
-	  survivalprob = 1./exp(pathlen/(ctau*betak*gammak))
-	  decdist = survivalprob		!decdist in ntuple
+	 endif
+	 
+ 	 pathlen = main%FP%p%path + zaero*(1+main%FP%p%dx**2+main%FP%p%dy**2)
+	 p_kaon = spec%p%P*(1.+main%SP%p%delta/100.)
+	 betak = spec%p%P/sqrt(spec%p%P**2+Mh2)
+	 gammak = 1./sqrt(1.-betak**2)
+	 survivalprob = 1./exp(pathlen/(ctau*betak*gammak))
+	 decdist = survivalprob	!decdist in ntuple
 	endif
 
 	return

@@ -14,7 +14,7 @@
 	parameter(name = 'SNT')
 	parameter(title = 'SIMTUPLE')
 	
-	data NtupleTag /80*' '/
+	data NtupleTag /200*' '/
 
 	NtupleID = defaultID
 	id = NtupleID
@@ -307,7 +307,11 @@
 	    m = m+1
 	    NtupleTag(m) = 'Em_v' ! 99  vetex%Em
 	    m = m+1
-	    NtupleTag(m) = 'Emiss' ! 100  Emiss	    
+	    NtupleTag(m) = 'Emiss' ! 100  Emiss
+	    m = m+1
+	    NtupleTag(m) = 'mm_L' ! 100  Emiss
+	    m = m+1
+	    NtupleTag(m) = 'mm_nnL' ! 100  Emiss	    
 	 endif
 	else if (doing_semi.or.doing_rho) then
 	   m = m+1

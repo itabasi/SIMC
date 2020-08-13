@@ -1,0 +1,26 @@
+ HRSr Trials:               5821774
+ Col (Sieve) entr/exit            0           0
+ Spec. entrance               14577
+ Q1 entrance/mid/exit         62856      758942      839822
+ Q2 entrance/mid/exit             0           2         230
+ Dipole entrance/exit        351562      982974
+ Q3 entrance/mid/exit        145543      466132      453753
+ Events reaching hut        1745381
+ VDC1, VDC2                       2        4243
+ S0, Cher, S2	           38152           0        1802
+ Calo. Ps, Calo. Sh               0           6
+ Successes                  1701176
+
+ HRSl Trials:                1701176
+ Col (Sieve) entr/exit             0           0
+ Spec. entrance                 3657
+ Q1 entrance/mid/exit          16011      217853      250371
+ Q2 entrance/mid/exit              0           0           0
+ Dipole entrance/exit         136764       16911
+ Q3 entrance/mid/exit             17         132       32238
+ Events reaching hut         1027222
+ VDC1, VDC2                        0           0
+ S0, Cher, S2	            27222           0           0
+ Calo. prl1, Calo. prl2            0           0
+ Successes                   1000000
+

@@ -18,7 +18,7 @@
 	data wcounter/0/
 
 	s_Al = 0.0
-!	s_Al =100000. ! test by itabashi
+!	s_Al =10. ! test by itabashi
 	liquid = targ%Z.lt.2.4
 
 	if ((abs(zpos) .gt. (targ%length/2.+1.d-5)) ) then

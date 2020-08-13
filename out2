@@ -1,0 +1,229 @@
+SIMTUPLE
+SNT
+102
+h_delta
+h_yptar
+h_xptar
+h_ytar
+h_xfp
+h_xpfp
+h_yfp
+h_ypfp
+h_deltai
+h_yptari
+h_xptari
+h_ytari
+e_delta
+e_yptar
+e_xptar
+e_ytar
+e_xfp
+e_xpfp
+e_yfp
+e_ypfp
+e_deltai
+e_yptari
+e_xptari
+e_ytari
+q
+nu
+Q2
+W
+epsilon
+Em
+Pm
+theta_pq
+phi_pq
+missmass
+mmnuc
+phad
+t
+pmpar
+pmper
+pmoop
+fry
+radphot
+pfermi
+siglab
+sigcm
+Weight
+decdist
+Mhadron
+pdotqhat
+Q2i
+Wi
+ti
+phipqi
+saghai
+factor
+zposi
+Lz
+Rz
+Ein
+rasx
+rasy
+Rp_rec
+Lp_rec
+Rp_orig
+Lp_orig
+Lph_orig
+Rph_orig
+Lth_orig
+Rth_orig
+pfer
+dOmega_e
+Mrec
+efer
+nu_gen
+nu_rec
+Rp_gen
+Lp_gen
+Lph_gen
+Rph_gen
+Lth_gen
+Rth_gen
+uq_x
+uq_y
+uq_z
+uq_x_gen
+uq_y_gen
+uq_z_gen
+q_gen
+Pm_gen
+up_x
+up_y
+up_z
+up_x_gen
+up_y_gen
+up_z_gen
+pferx
+pfery
+pferz
+Em_v
+Emiss
+mm_L
+mm_nnL
+adding branch : Normfac
+adding branch : h_delta
+adding branch : h_yptar
+adding branch : h_xptar
+adding branch : h_ytar
+adding branch : h_xfp
+adding branch : h_xpfp
+adding branch : h_yfp
+adding branch : h_ypfp
+adding branch : h_deltai
+adding branch : h_yptari
+adding branch : h_xptari
+adding branch : h_ytari
+adding branch : e_delta
+adding branch : e_yptar
+adding branch : e_xptar
+adding branch : e_ytar
+adding branch : e_xfp
+adding branch : e_xpfp
+adding branch : e_yfp
+adding branch : e_ypfp
+adding branch : e_deltai
+adding branch : e_yptari
+adding branch : e_xptari
+adding branch : e_ytari
+adding branch : q
+adding branch : nu
+adding branch : Q2
+adding branch : W
+adding branch : epsilon
+adding branch : Em
+adding branch : Pm
+adding branch : theta_pq
+adding branch : phi_pq
+adding branch : missmass
+adding branch : mmnuc
+adding branch : phad
+adding branch : t
+adding branch : pmpar
+adding branch : pmper
+adding branch : pmoop
+adding branch : fry
+adding branch : radphot
+adding branch : pfermi
+adding branch : siglab
+adding branch : sigcm
+adding branch : Weight
+adding branch : decdist
+adding branch : Mhadron
+adding branch : pdotqhat
+adding branch : Q2i
+adding branch : Wi
+adding branch : ti
+adding branch : phipqi
+adding branch : saghai
+adding branch : factor
+adding branch : zposi
+adding branch : Lz
+adding branch : Rz
+adding branch : Ein
+adding branch : rasx
+adding branch : rasy
+adding branch : Rp_rec
+adding branch : Lp_rec
+adding branch : Rp_orig
+adding branch : Lp_orig
+adding branch : Lph_orig
+adding branch : Rph_orig
+adding branch : Lth_orig
+adding branch : Rth_orig
+adding branch : pfer
+adding branch : dOmega_e
+adding branch : Mrec
+adding branch : efer
+adding branch : nu_gen
+adding branch : nu_rec
+adding branch : Rp_gen
+adding branch : Lp_gen
+adding branch : Lph_gen
+adding branch : Rph_gen
+adding branch : Lth_gen
+adding branch : Rth_gen
+adding branch : uq_x
+adding branch : uq_y
+adding branch : uq_z
+adding branch : uq_x_gen
+adding branch : uq_y_gen
+adding branch : uq_z_gen
+adding branch : q_gen
+adding branch : Pm_gen
+adding branch : up_x
+adding branch : up_y
+adding branch : up_z
+adding branch : up_x_gen
+adding branch : up_y_gen
+adding branch : up_z_gen
+adding branch : pferx
+adding branch : pfery
+adding branch : pferz
+adding branch : Em_v
+adding branch : Emiss
+adding branch : mm_L
+adding branch : mm_nnL
+Event : 1000
+Event : 2000
+Event : 3000
+Event : 4000
+Event : 5000
+Event : 6000
+Event : 7000
+Event : 8000
+Event : 9000
+Event : 10000
+Event : 11000
+Event : 12000
+Event : 13000
+Event : 14000
+Event : 15000
+Event : 16000
+Event : 17000
+Event : 18000
+Event : 19000
+Event : 20000
+Read 20001 events

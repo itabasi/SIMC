@@ -258,7 +258,6 @@
 	real*8 grnd
 
 ! Determine Em distribution at fixed Pm (integrated SF up to Em).
-
 ! Comment by itabashi
 ! x() is Removal Energy (A-1) sysytem
 ! y() is SF value

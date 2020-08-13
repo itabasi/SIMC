@@ -1,6 +1,6 @@
 
- BEGIN Time: Mon Jun 29 15:18:57 2020      
- END Time:   Mon Jun 29 15:19:00 2020      
+ BEGIN Time: Thu Aug 13 18:26:25 2020      
+ END Time:   Thu Aug 13 18:26:28 2020      
  KINEMATICS:
                ****--------  H(e,e'K)  --------****
                ****---- producing a LAMBDA ----****
@@ -78,7 +78,7 @@
             -> %no_rad_prot=    100.000
 
  INTEGRATED WEIGHTS (number of counts in delta/Em cuts!):
-               MeV: wtcontr=   0.11849284E+00
+               MeV: wtcontr=   0.26387676E+00
  RADIATIVE CORRECTIONS:
       use_expon=  F   include_hard=  T    calc_spence=  T
       using_rad=  T use_offshell_r=  T

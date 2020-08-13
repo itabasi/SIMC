@@ -31,10 +31,11 @@ C Local declarations.
 	real*8 grnd
 
 C ============================= Executable Code ================================
-
+	
 C Check for decay of particle.
 
-	if (.not.decay_flag .or. dflag) then  !particle has already decayed, just drift
+ 	if (.not.decay_flag .or. dflag) then !particle has already decayed, just drift
+
 	  pathlen = pathlen + z_drift*sqrt(1+dxdzs**2+dydzs**2) 
 	  x_new = x_new + dxdzs * z_drift
 	  y_new = y_new + dydzs * z_drift
@@ -44,15 +45,19 @@ C Check for decay of particle.
 	  p_spec = ph/(1.+dpps/100.)
 	  beta = ph/sqrt(ph**2+m2)
 	  gamma = 1./sqrt(1.-beta*beta)
-	  dlen=ctau*beta*gamma   !1/e decay length (beta*c*tau*gamma)
+	  dlen=ctau*beta*gamma	!1/e decay length (beta*c*tau*gamma)
+
+	  
 	  if (z_drift.le.0) write(6,*) 'drift distance<0:  automatic decay! BAD!'
 
 	  z_decay = -1.*dlen*log(1-grnd())
-
+ !	  write(6,*)'z_decay ',z_decay
 C Check if the decay is within the drift length (i.e. the drift lenght in
 C z, times sqrt(1+dxdzs**2+dydzs**2) to correct for the true path of the ray.
 
-	  if(z_decay .gt. z_drift*sqrt(1+dxdzs**2+dydzs**2)) then !no decay 
+	  if(z_decay .gt. z_drift*sqrt(1+dxdzs**2+dydzs**2)) then !no decay
+
+
 
 	    decdist = decdist + z_drift*sqrt(1+dxdzs**2+dydzs**2)
 	    pathlen = pathlen + z_drift*sqrt(1+dxdzs**2+dydzs**2) 
@@ -65,8 +70,10 @@ C z, times sqrt(1+dxdzs**2+dydzs**2) to correct for the true path of the ray.
 	    decdist = decdist + z_decay
 	    pathlen = pathlen + z_decay
 	    x_new = x_new + dxdzs * z_decay/sqrt(1+dxdzs**2+dydzs**2) 
-	    y_new = y_new + dydzs * z_decay/sqrt(1+dxdzs**2+dydzs**2) 
-
+	    y_new = y_new + dydzs * z_decay/sqrt(1+dxdzs**2+dydzs**2)
+	    
+!	    write(6,*)'dflag, pathlen ',dflag,pathlen
+	    
 C Generate center/mass decay angles and momenta.
 	    rph = grnd()*2.*pi
 	    rth1 = grnd()*2.-1.

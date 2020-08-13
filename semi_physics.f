@@ -471,23 +471,24 @@ C NUMBERS MAY BE WRONG.  AERO BETWEEN S2Y AND S2X IN SOS AND BETWEEN DC2 S1X in 
 C Beta/Gamma for decay need to use momentum after radiation/eloss, not vertex
 C momentum.  Get particle momentum from main.SP.p.delta
 
-	if (.not.doing_decay) then
-	  if (hadron_arm.eq.1) then
-	    zaero = -331.491		!aero at 40.199 cm, last project=371.69 cm
-	  else if (hadron_arm.eq.2) then
-*	    zaero = -76.		!aero at 270cm,last project=346(cal).
-	    zaero = -82.8		!From Rick: aero at 263.2cm,last project=346(cal).
+ 	if (.not.doing_decay) then
+	   if (hadron_arm.eq.1) then
+	      zaero = -331.491	!aero at 40.199 cm, last project=371.69 cm
+	   else if (hadron_arm.eq.2) then
+*       zaero = -76.		!aero at 270cm,last project=346(cal).
+	      zaero = -82.8	!From Rick: aero at 263.2cm,last project=346(cal).
 	  else if (hadron_arm.eq.3) then
-	    zaero = -183.		!aero at 130cm,last project=313(S2)
+	     zaero = -183.	!aero at 130cm,last project=313(S2)
 	  else if (hadron_arm.eq.4) then
-	    zaero = -183.
-	  endif
-	  pathlen = main%FP%p%path + zaero*(1+main%FP%p%dx**2+main%FP%p%dy**2)
-	  p_kaon = spec%p%P*(1.+main%SP%p%delta/100.)
-	  betak = spec%p%P/sqrt(spec%p%P**2+Mh2)
-	  gammak = 1./sqrt(1.-betak**2)
-	  survivalprob = 1./exp(pathlen/(ctau*betak*gammak))
-	  decdist = survivalprob		!decdist in ntuple
+	     zaero = -183.
+	 endif
+	 
+	 pathlen = main%FP%p%path + zaero*(1+main%FP%p%dx**2+main%FP%p%dy**2)
+	 p_kaon = spec%p%P*(1.+main%SP%p%delta/100.)
+	 betak = spec%p%P/sqrt(spec%p%P**2+Mh2)
+	 gammak = 1./sqrt(1.-betak**2)
+	 survivalprob = 1./exp(pathlen/(ctau*betak*gammak))
+	 decdist = survivalprob	!decdist in ntuple
 	endif
 
 	return

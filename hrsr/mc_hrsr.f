@@ -189,6 +189,7 @@ C Read in transport coefficients.
 ! Front of external Collimator/Sieve
         zdrift = 105.96
         ztmp = zdrift
+	
         call project(xs,ys,zdrift,decay_flag,dflag,m2,p,pathlen)
 	if ( (abs(ys-y_off).gt.h_entr) .or. (abs(xs-x_off).gt.v_entr) ) then
            rSTOP_col_entr = rSTOP_col_entr + 1
