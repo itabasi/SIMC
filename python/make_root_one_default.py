@@ -74,7 +74,7 @@ out_name,ext2 = p.splitext(out_name)
 data_file = SIMDIR + DATDIR + name + ext
 hist_file = SIMDIR + OUTDIR + name + '.hist'
 root_file = SIMDIR + DATDIR + name + '.root'
-#root_res_file = SIMDIR + RESDIR + name + '.root'
+root_res_file = SIMDIR + RESDIR + name + '.root'
 root_res_file = SIMDIR + RESDIR + out_name + '.root'
 print('root_ref, out_name',root_res_file,out_name)
 normfac = get_normfac(hist_file)

@@ -7,7 +7,7 @@ void benharsf(){
 
   string buf;
   int ii=0;
-  double hbarc =193.;// MeV *fm
+  double hbarc =197.;// MeV *fm
   double pfer[2000],k[2000],Em[2000],SFn[2000],SFp[2000],dpfer[2000],dEm[2000];
   getline(ifp,buf);
   stringstream sbuf(buf);

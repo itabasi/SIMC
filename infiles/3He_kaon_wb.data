@@ -17,9 +17,9 @@
      doing_decay  =  F					!  1=decay ON, 0=decay OFF.
      ctau  =  371.3					!  decay length (cm)
      extra_dbase_file = 'extra_kaon.data' 		!  additional input parameters.
-     use_sf = T						!  Use spectral function
+     use_sf = F						!  Use spectral function
      sf_version = 0					!  Spectral function version (0=Benhar, 1=Kaptari)
-     doing_bound = F            			!  T = 2-body break up, F = 3-body break up
+     doing_bound = T            			!  T = 2-body break up, F = 3-body break up
 / 
  =?
  &KINEMATICS_MAIN

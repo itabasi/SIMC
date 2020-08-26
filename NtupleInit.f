@@ -214,9 +214,13 @@
 	  endif
 	  if (doing_kaon) then
 	    m = m+1
-	    NtupleTag(m) = 'saghai'	! 54
+	    NtupleTag(m) = 'pathL_R' ! 54  PathL RHRS
 	    m = m+1
-	    NtupleTag(m) = 'factor' ! 55
+	    NtupleTag(m) = 'pathL_L' ! 55  PathL LHRS
+!	    m = m+1
+!	    NtupleTag(m) = 'saghai'	! 54
+!	    m = m+1
+!	    NtupleTag(m) = 'factor' ! 55
 !       added by itabashi
 	    m = m+1
 	    NtupleTag(m) = 'zposi' ! 56
@@ -309,9 +313,15 @@
 	    m = m+1
 	    NtupleTag(m) = 'Emiss' ! 100  Emiss
 	    m = m+1
-	    NtupleTag(m) = 'mm_L' ! 100  Emiss
+	    NtupleTag(m) = 'mm_L' ! 101  Emiss
 	    m = m+1
-	    NtupleTag(m) = 'mm_nnL' ! 100  Emiss	    
+	    NtupleTag(m) = 'mm_nnL' ! 102  Emiss
+	    m = m+1
+	    NtupleTag(m) = 'Trec' ! 103  Recon Energy	    
+!	    m = m+1
+!	    NtupleTag(m) = 'pathL_R' ! 103  PathL RHRS
+!	    m = m+1
+!	    NtupleTag(m) = 'pathL_L' ! 104  PathL LHRS	    
 	 endif
 	else if (doing_semi.or.doing_rho) then
 	   m = m+1

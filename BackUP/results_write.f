@@ -220,9 +220,11 @@ c	  ntu(11) = vertex%p%xptar			!mr
 		ntu(95) = vertex%up%z ! vertex up_z
 		ntu(96) = pferx ! fermi mom x
 		ntu(97) = pfery ! fermi mom y
-		ntu(98) = pferx ! fermi mom z
+		ntu(98) = pferz ! fermi mom z
 		ntu(99) = vertex%Em ! Removal Energy
 		ntu(100) = vertex%Emiss ! Missing Energy
+		ntu(101) = ntup%mm_L ! Missing Energy
+		ntu(102) = ntup%mm_nnL ! Missing Energy
 	     endif
 	  endif
 	else if (doing_semi.or.doing_rho) then

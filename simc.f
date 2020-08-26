@@ -1922,7 +1922,7 @@ c	recon.e.delta = (recon.e.P-spec.e.P)/spec.e.P*100.
 	   print *, 'recon_vertex: unknown spectrometer type : ', sp_type
 	   stop
 	endif
-
+	
 ! trajectory directions
 	th_t = sp%theta
 	ph_t = sp%phi

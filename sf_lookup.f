@@ -227,7 +227,7 @@
 	    SF = sfval(1,iPm) 
 	  else if (w1.lt.w2) then
 	    SF = sfval(1,iPm+1)
-	  endif
+	 endif
 	  if (SF.lt.1.d-20) SF=0 !If the obtained value is extremely small, just return zero!
 	endif
 

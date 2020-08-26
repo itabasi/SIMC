@@ -1,3 +1,4 @@
+
 	subroutine results_ntu_write(main,vertex,orig,recon,success)
 
 	implicit none
@@ -5,7 +6,7 @@
 	include 'hbook.inc'
 	include 'simulate.inc'
 
-	real*4	ntu(80)
+	real*4	ntu(200)
 	type(event_main):: main
 	type(event):: vertex, orig, recon
 
@@ -15,7 +16,6 @@
 !	real*8 mm,mm2		!missing mass (assuming struck nucleon)
 !	real*8 mmA,mmA2		!missing mass (assuming struck nucleus)
 	real*8 Pm_Heepx,Pm_Heepy,Pm_Heepz	!Pm components for Heepcheck.
-
 !local (e,e'pi/K) calculations:
 !	real*8 t		!t
 	real*8 dummy
@@ -173,12 +173,16 @@ c	  ntu(11) = vertex%p%xptar			!mr
 	     endif
 	  else
 	     if (doing_kaon) then
-! added by itabashi
-		ntu(54) = ntup%sigcm2 !sigcm - saghai model
-		ntu(55) = ntup%sigcm2 !sigcm - factorized.
+!       added by itabashi
+		ntu(54) = main%FP%p%path ! pathL RHRS
+		ntu(55) = main%FP%e%path ! pathL LHRS		
+!		ntu(54) = ntup%sigcm2 !sigcm - saghai model
+!		ntu(55) = ntup%sigcm2 !sigcm - factorized.
 		ntu(56) = main%target%z	!  vertex z
-		ntu(57) = recon%e%z
-		ntu(58) = recon%p%z
+!       ntu(57) = recon%e%z
+!       ntu(58) = recon%p%z
+		ntu(57) = main%RECON%e%z
+		ntu(58) = main%RECON%p%z
 		ntu(59) = recon%ein !  incident energy
 		ntu(60) = -main%target%rasterx !  incident beam raster x
 		ntu(61) = -main%target%rastery !  incident beam raster y
@@ -225,18 +229,21 @@ c	  ntu(11) = vertex%p%xptar			!mr
 		ntu(100) = vertex%Emiss ! Missing Energy
 		ntu(101) = ntup%mm_L ! Missing Energy
 		ntu(102) = ntup%mm_nnL ! Missing Energy
+		ntu(103) = vertex%Trec ! Trecon (Removal Energy)
+!		ntu(103) = main%FP%p%path ! pathL RHRS
+!		ntu(104) = main%FP%e%path ! pathL LHRS
 	     endif
 	  endif
 	else if (doing_semi.or.doing_rho) then
-	  ntu(34) = ntup%mm/1000.			!missmass (nucleon)
-	  ntu(35) = recon%p%P/1000.			!ppi - GeV/c
-	  ntu(36) = ntup%t/1.d6				!t - GeV^2
-	  ntu(37) = -main%target%rastery		!fry - cm
-	  ntu(38) = ntup%radphot/1000.			!radphot - GeV
-	  ntu(39) = main%sigcc				!d5sig
-	  ntu(40) = main%sigcent			!d5sig - central kin.
-	  ntu(41) = main%weight
-	  ntu(42) = decdist				!decay distance (cm)
+	   ntu(34) = ntup%mm/1000. !missmass (nucleon)
+	   ntu(35) = recon%p%P/1000. !ppi - GeV/c
+	   ntu(36) = ntup%t/1.d6 !t - GeV^2
+	   ntu(37) = -main%target%rastery !fry - cm
+	   ntu(38) = ntup%radphot/1000.	!radphot - GeV
+	   ntu(39) = main%sigcc	!d5sig
+	   ntu(40) = main%sigcent !d5sig - central kin.
+	   ntu(41) = main%weight
+	   ntu(42) = decdist	!decay distance (cm)
 	  ntu(43) = sqrt(Mh2_final)
 	  ntu(44) = recon%zhad
 	  ntu(45) = vertex%zhad

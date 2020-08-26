@@ -27,7 +27,6 @@ C Local declarations.
 	real*8 beta,gamma,dlen
 	real*8 ef,pf,pxf,pyf,pzf,pxr,pyr,pzr
 	real*8 bx,by,bz,er,pr
-
 	real*8 grnd
 
 C ============================= Executable Code ================================
@@ -50,8 +49,9 @@ C Check for decay of particle.
 	  
 	  if (z_drift.le.0) write(6,*) 'drift distance<0:  automatic decay! BAD!'
 
+!	  z_decay = -1.*dlen*log(0.5)
 	  z_decay = -1.*dlen*log(1-grnd())
- !	  write(6,*)'z_decay ',z_decay
+!	  write(6,*)'z_decay ',z_decay
 C Check if the decay is within the drift length (i.e. the drift lenght in
 C z, times sqrt(1+dxdzs**2+dydzs**2) to correct for the true path of the ray.
 
@@ -72,7 +72,7 @@ C z, times sqrt(1+dxdzs**2+dydzs**2) to correct for the true path of the ray.
 	    x_new = x_new + dxdzs * z_decay/sqrt(1+dxdzs**2+dydzs**2) 
 	    y_new = y_new + dydzs * z_decay/sqrt(1+dxdzs**2+dydzs**2)
 	    
-!	    write(6,*)'dflag, pathlen ',dflag,pathlen
+!	    write(6,*)'pathlen, z_decay, decdist ',pathlen,z_decay,decdist
 	    
 C Generate center/mass decay angles and momenta.
 	    rph = grnd()*2.*pi
@@ -85,7 +85,6 @@ C Generate center/mass decay angles and momenta.
 	    pzr = 29.783*cos(rth)
 	    m2 = 105.67 **2	!need mass-squared for multiple scattering.
 	    Mh2_final = m2	!for ntuple
-
 
 C Boost to Lab frame, calculate new angles and momentum, finish drift
 
@@ -100,11 +99,14 @@ C Boost to Lab frame, calculate new angles and momentum, finish drift
 
 C We've already drifted z_decay/sqrt(1+dxdzs**2+dydzs**2) - now do the rest.
 
+	    
 	    tmpdrift = z_drift - z_decay/sqrt(1+dxdzs**2+dydzs**2) 
 	    pathlen = pathlen + tmpdrift*sqrt(1+dxdzs**2+dydzs**2) 
 	    x_new = x_new + dxdzs * tmpdrift
 	    y_new = y_new + dydzs * tmpdrift
 
+!	    write(6,*)'pathlen, x_new, y_new ',pathlen,x_new,y_new
+	    
 	  endif	  !if decayed
 	endif	!if need to check for decay
 
