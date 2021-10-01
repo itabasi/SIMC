@@ -298,7 +298,10 @@ C The arguments
 	logical decay_flag		!check for decay
 	logical ok_hut			!true if particle makes it
 
-C Local declarations.
+
+
+	
+C       Local declarations.
 
 	integer*4 i
 
@@ -322,7 +325,10 @@ C ================================ Executable Code =============================
 C Initialize ok_hut to zero
 
 	ok_hut = .false.
-
+! test by itabashi
+!	decay_flag=.false.
+!	dflag=.false.
+	
 C Initialize the xdc and ydc arrays to zero
 
 	do i=1,2

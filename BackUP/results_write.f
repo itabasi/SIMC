@@ -5,7 +5,7 @@
 	include 'hbook.inc'
 	include 'simulate.inc'
 
-	real*4	ntu(200)
+	real*4	ntu(80)
 	type(event_main):: main
 	type(event):: vertex, orig, recon
 
@@ -139,14 +139,10 @@ c	  ntu(11) = vertex%p%xptar			!mr
 	  ntu(35) = ntup%mmA/1000.			!missmass (nucleus)
 	  ntu(36) = recon%p%P/1000.			!ppi - GeV/c
 	  ntu(37) = ntup%t/1.d6				!t - GeV^2
-	  ntu(38) = vertex%Trec ! Removal Energy
-	  ntu(39) = pferx	! fermi mom x
-	  ntu(40) = pfery	! fermi mom y
-	  ntu(41) = pferz	! fermi mom z
-!	  ntu(38) = recon%PmPar/1000.
-!	  ntu(39) = recon%PmPer/1000.
-!	  ntu(40) = recon%PmOop/1000.
-!	  ntu(41) = -main%target%rastery		!fry - cm
+	  ntu(38) = recon%PmPar/1000.
+	  ntu(39) = recon%PmPer/1000.
+	  ntu(40) = recon%PmOop/1000.
+	  ntu(41) = -main%target%rastery		!fry - cm
 	  ntu(42) = ntup%radphot/1000.			!radphot - GeV
 	  dummy = pferx*vertex%uq%x + pfery*vertex%uq%y + pferz*vertex%uq%z
 	  if (dummy.eq.0) dummy=1.d-20
@@ -179,7 +175,6 @@ c	  ntu(11) = vertex%p%xptar			!mr
 	     if (doing_kaon) then
 ! added by itabashi
 		ntu(54) = ntup%sigcm2 !sigcm - saghai model
-!		ntu(54) = vertex%Emiss ! Missing Energy
 		ntu(55) = ntup%sigcm2 !sigcm - factorized.
 		ntu(56) = main%target%z	!  vertex z
 		ntu(57) = recon%e%z
@@ -189,16 +184,15 @@ c	  ntu(11) = vertex%p%xptar			!mr
 		ntu(61) = -main%target%rastery !  incident beam raster y
 		ntu(62) = recon%p%p !  final proton momentum
 		ntu(63) = recon%e%p !  final electron momentum
-		ntu(64) = orig%p%p !  reconstruct proton momentum
-		ntu(65) = orig%e%p !  reconstruct electron momentum
-		ntu(66) = orig%e%yptar !  reconstruct electron phi at target
-		ntu(67) = orig%p%yptar !  reconstruct proton phi at target
-		ntu(68) = orig%e%xptar !  reconstruct electron theta at target
+		ntu(64) = orig%p%p !  generated proton momentum
+		ntu(65) = orig%e%p !  generated electron momentum
+		ntu(66) = orig%e%yptar !  generated electron phi at target
+		ntu(67) = orig%p%yptar !  generated proton phi at target
+		ntu(68) = orig%e%xptar !  generated electron theta at target
 		ntu(69) = orig%p%xptar !  generated proton theta at  target
 		ntu(70) = pfer
 !sign(pfer/1000., dummy) !p_fermi - GeV/c
-!		ntu(71) = (gen%e%yptar%max-gen%e%yptar%min)*(gen%e%xptar%max-gen%e%xptar%min)
-		ntu(71) = vertex%Pm/1000.
+		ntu(71) = (gen%e%yptar%max-gen%e%yptar%min)*(gen%e%xptar%max-gen%e%xptar%min)
 !       sign(pfer/1000., dummy) !p_fermi - GeV/c                          
 		ntu(72) = vertex%Mrec  
 		ntu(73) = efer
@@ -217,41 +211,20 @@ c	  ntu(11) = vertex%p%xptar			!mr
 		ntu(86) = vertex%uq%y ! vertex uq_y
 		ntu(87) = vertex%uq%z ! vertex uq_z
 		ntu(88) = vertex%q/1000. ! vertex q
-		ntu(89) = vertex%Pmiss/1000. ! vertex Pmiss
-		ntu(90) = ntup%mm_L ! Missing Energy
-		ntu(91) = ntup%mm_S ! Missing Energy
-		ntu(92) = ntup%mm_nnL ! Missing Energy
-		ntu(93) = ntup%mm_3HL ! Missing Energy
-!		ntu(90) = recon%up%x ! recon up_x
-!		ntu(91) = recon%up%y ! recon up_y
-!		ntu(92) = recon%up%z ! recon up_z
-		!ntu(93) = vertex%up%x ! vertex up_x
-		!ntu(94) = vertex%up%y ! vertex up_y
-		!ntu(95) = vertex%up%z ! vertex up_z
-		!!!!!!ntu(93) = targ%Eloss(1)%ave! Eloss_e (Incoming Electron)
-		!!!!!!ntu(94) = targ%Eloss(2)%ave! Eloss_ep (Scattered Electron)
-		!!!!!!ntu(95) = targ%Eloss(3)%ave! Eloss_k (produced Kaon)
-!		ntu(93) = decdist!Survival Probability 
-		ntu(94) = main%FP%p%path!gammak
-		ntu(95) = main%FP%e%path!betak
-		ntu(96) = Egamma_used(1) 
-		ntu(97) = Egamma_used(2) 
-		ntu(98) = Egamma_used(3) 
-		!ntu(93) = recon%Eloss! Eloss_e (Incoming Electron)
-		!ntu(94) = recon%e%Eloss! Eloss_ep (Scattered Electron)
-		!ntu(95) = recon%p%Eloss! Eloss_k (produced Kaon)
-		!ntu(96) = pferx ! fermi mom x
-		!ntu(97) = pfery ! fermi mom y
-		!ntu(98) = pferz ! fermi mom z
-		ntu(99) = vertex%Em     ! Removal Energy
+		ntu(89) = vertex%Pmiss/1000. ! vertex Pm
+		ntu(90) = recon%up%x ! recon up_x
+		ntu(91) = recon%up%y ! recon up_y
+		ntu(92) = recon%up%z ! recon up_z
+		ntu(93) = vertex%up%x ! vertex up_x
+		ntu(94) = vertex%up%y ! vertex up_y
+		ntu(95) = vertex%up%z ! vertex up_z
+		ntu(96) = pferx ! fermi mom x
+		ntu(97) = pfery ! fermi mom y
+		ntu(98) = pferz ! fermi mom z
+		ntu(99) = vertex%Em ! Removal Energy
 		ntu(100) = vertex%Emiss ! Missing Energy
-!		ntu(101) = vertex%Trec ! Removal Energy
-!		ntu(102) = pferx ! fermi mom x
-!		ntu(103) = pfery ! fermi mom y
-!		ntu(104) = pferz ! fermi mom z
-!		ntu(101) = ntup%mm_L ! Missing Energy
-!		ntu(102) = ntup%mm_S ! Missing Energy
-!		ntu(103) = ntup%mm_nnL ! Missing Energy
+		ntu(101) = ntup%mm_L ! Missing Energy
+		ntu(102) = ntup%mm_nnL ! Missing Energy
 	     endif
 	  endif
 	else if (doing_semi.or.doing_rho) then

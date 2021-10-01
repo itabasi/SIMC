@@ -121,6 +121,8 @@ C      to be used are cm, mrad, not m, slopes
 C Check that the path length passed to code (zd) is consistent with comments
 C in MEs (if they exist)
 
+
+	
 	if (length(spectr,class).gt.0.01 .and.
      >		abs(length(spectr,class)-zd).gt.0.01 ) then
 	    write(6,*) 'PROBLEM WITH TRANSFORMATION #',class,' for spectrometer #',spectr
@@ -242,7 +244,7 @@ C Check for decay in 2nd half of element, which is applied AFTER trasnporting.
 	endif
 
 C Keep track of pathlength.
-	pathlen = pathlen + (zd+delta_z)
+!	pathlen = pathlen + (zd+delta_z)  ! itatest
 
 	return
 

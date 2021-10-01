@@ -124,12 +124,16 @@
 	real*8 grnd		!random # generator.
 	type(event_main):: main
 	type(event):: vertex, orig
+<<<<<<< HEAD
 	real*8 theta_gen_cm ,phi_gen_cm, theta_gk
 	real*8 beta, gamma_f, E_cm, x_lab, y_lab, z_lab, x_cm, y_cm, z_cm, r_cm, r 
 	real*8 theta_gen_n1 ,theta_gen_d1, phi_gen_n, phi_gen_d
 	real*8 theta_gen_n2 ,theta_gen_d2
 	real*8 theta_gen ,phi_gen,x,y,z
 	logical ang_test
+=======
+
+>>>>>>> 141b62a2ecafc56b267c4f62f650951fdf7c8528
 	real*8 nsig_max
 	parameter(nsig_max=3.0d0)      !max #/sigma for gaussian ran #s.
 
@@ -273,6 +277,7 @@ C modified 5/15/06 for poinct
 	vertex%e%yptar=gen%e%yptar%min+grnd()*(gen%e%yptar%max-gen%e%yptar%min)
 	vertex%e%xptar=gen%e%xptar%min+grnd()*(gen%e%xptar%max-gen%e%xptar%min)
 
+<<<<<<< HEAD
 !       Generate Electron Angles (all cases): Acceptance test modified by itabashi
 
 
@@ -326,6 +331,9 @@ C modified 5/15/06 for poinct
 	
 	   
 !       -----------------------------------------------------------------------------
+=======
+! -----------------------------------------------------------------------------
+>>>>>>> 141b62a2ecafc56b267c4f62f650951fdf7c8528
 ! Generate Hadron Angles (all but H(e,e'p)):
 	if (doing_deuterium.or.doing_heavy.or.doing_pion.or.doing_kaon
      >         .or.doing_delta.or.doing_semi) then
@@ -335,6 +343,7 @@ C modified 5/15/06 for poinct
      >          (gen%p%xptar%max-gen%p%xptar%min)
 	endif
 
+<<<<<<< HEAD
 
 	
 	if(spect_mode .eq. -1 .or. spect_mode .eq. 1) then
@@ -387,6 +396,8 @@ C modified 5/15/06 for poinct
 
 	
 	
+=======
+>>>>>>> 141b62a2ecafc56b267c4f62f650951fdf7c8528
 ! -----------------------------------------------------------------------------
 ! Generate Hadron Momentum (A(e,e'p) .not.doing_bound or semi-inclusive production).
 	if ((doing_heavy .and. (.not. doing_bound)) .or. doing_semi) then
@@ -403,13 +414,12 @@ C modified 5/15/06 for poinct
 ! Generate Electron Energy (all but hydrogen elastic)
 	if (doing_deuterium.or.doing_heavy.or.doing_pion.or.doing_kaon
      >       .or.doing_delta.or.doing_rho.or.doing_semi) then
-	   Emin=gen%e%E%min
-	   Emax=edge%e%E%max ! changed by itabashi for acc test
-!	   Emax=gen%e%E%max
+	  Emin=gen%e%E%min
+	  Emax=gen%e%E%max
 	  if (doing_deuterium .or. (doing_heavy .and. doing_bound) 
      >	     .or. doing_pion .or. doing_kaon .or. doing_delta .or. doing_rho) then
-	  Emin = max(Emin,gen%sumEgen%min)
-	  Emax = min(Emax,gen%sumEgen%max)
+	    Emin = max(Emin,gen%sumEgen%min)
+	    Emax = min(Emax,gen%sumEgen%max)
 	  else if (doing_heavy .and. (.not. doing_bound)) then		! A(e,e'p)
 	    Emin = max(Emin, gen%sumEgen%min - vertex%p%E)
 	    Emax = min(Emax, gen%sumEgen%max - vertex%p%E)
@@ -417,7 +427,6 @@ C modified 5/15/06 for poinct
 	  if (Emin.gt.Emax) goto 100
 	  main%gen_weight=main%gen_weight*(Emax-Emin)/(gen%e%E%max-gen%e%E%min)
 	  vertex%e%E = Emin + grnd()*(Emax-Emin)
-!	  write(6,*)'Emin;Emax ',Emin,Emax ! ita 0628
 	  vertex%e%P = vertex%e%E
 	  vertex%e%delta = 100.*(vertex%e%P-spec%e%P)/spec%e%P
 	endif	!not (doing_hyd_elast)
@@ -432,8 +441,6 @@ C modified 5/15/06 for poinct
 	call physics_angles(spec%p%theta,spec%p%phi,
      &		vertex%p%xptar,vertex%p%yptar,vertex%p%theta,vertex%p%phi)
 
-	
-!	write(6,*)'spec_e_theta,spec_e_phi,e_xptar,e_yptar,e_theta,e_phi',spec%e%theta,spec%e%phi,vertex%e%xptar,vertex%e%yptar,vertex%e%theta,vertex%e%phi ! ita test 0625
 
 ! -----------------------------------------------------------------------------
 ! Generate Fermi Momentum and Em for A(e,e'pi) and A(e,e'K). 
@@ -448,7 +455,6 @@ C modified 5/15/06 for poinct
      >      .or.doing_deutsemi)then
 	  ranprob=grnd()
 	  ii=1
-!       mporb is ingegral (he3.data) value of momentum 
 	  do while (ranprob.gt.mprob(ii) .and. ii.lt.nump)
 	    ii=ii+1
 	  enddo
@@ -469,6 +475,7 @@ C modified 5/15/06 for poinct
 	  pferx=sin(ranth)*cos(ranph)
 	  pfery=sin(ranth)*sin(ranph)
 	  pferz=cos(ranth)
+
 	  if (doing_deutpi.or.doing_deutkaon.or.doing_deutdelta
      >        .or.doing_deutrho .or.doing_deutsemi) then !Em = binding energy
 	    vertex%Em = Mp + Mn - targ%M
@@ -479,18 +486,7 @@ C modified 5/15/06 for poinct
 	    call generate_em(pfer,vertex%Em, doing_bound)		!Generate Em
 	    m_spec = targ%M - targ%Mtar_struck + vertex%Em != M^*_{A-1}
 	    efer = targ%M - sqrt(m_spec**2+pfer**2)
-!Added by itabashi as a test
-!!!!!!!!! Comment by itabashi !!!!!!!!!!
-! targ%Mtar_struck is mass of proton
-! targe%M is mass of target
-! vertex%Em is biding energy p to M{A-1}
-! m_spec is masss of A-1 sysytem
-! efer is energy of proton  ??
-!!!!!!!!!!!!!!!!!!!
-
-	    !write(6,*)'efer,pfer,Em,m_spec,targM,targMst',efer,pfer,vertex%Em,m_spec,targ%M,targ%Mtar_struck
-!	    write(6,*)'efer,Em,pfer,mp',efer,vertex%Em,pfer,targ%Mtar_struck
-	 endif
+	  endif
 	endif
 
 ! -----------------------------------------------------------------------------
@@ -658,8 +654,7 @@ C Call energy loss here - just before sending on to the spectrometers.
 ! NOTE: Coherent pion/kaon production (bound final state) is treated as
 ! hydrogen, but with targ.Mtar_struck=targ.M, targ.Mtar_rec=bound final state.
 
-	
-	if (doing_hyd_elast) then !p = q
+	if (doing_hyd_elast) then	!p = q
 	  vertex%Em = 0.0
 	  vertex%Pm = 0.0
 	  vertex%Mrec = 0.0
@@ -743,11 +738,13 @@ c            write(6,*) 'rho mass is', Mh
 c	  endif
 	      
 
+
 	  vertex%Pm = pfer	!vertex%Em generated at beginning.
 	  vertex%Mrec = targ%M - targ%Mtar_struck + vertex%Em
 	  a = -1.*vertex%q*(vertex%uq%x*vertex%up%x+vertex%uq%y*vertex%up%y+vertex%uq%z*vertex%up%z)
 	  b = vertex%q**2
 	  c = vertex%nu + targ%M
+
 ! For nuclei, correct for fermi motion and missing energy.  Also, check
 ! second solution to quadratic equation - there are often two valid
 ! solutions, and we always pick the larger one (which is the forward going
@@ -808,28 +805,16 @@ c	  endif
 	    endif
 	 endif
 
-
-
-	 
 	  E_rec=c-vertex%p%E	!energy of recoil system
 	  if (E_rec.le.targ%Mrec_struck) return	!non-physical solution
-	  
+
 	  if (vertex%p%E.le.Mh) return
 	  vertex%p%P = sqrt(vertex%p%E**2 - Mh2)
 	  vertex%p%delta = (vertex%p%P - spec%p%P)*100./spec%p%P
 !	write(6,*) 'p,e=',vertex%p%P,vertex%p%E
 
-!!!! modified by itabashi for accpectance study
-	  if(spect_mode .eq. -1) then 
-
-	     vertex%p%E = gen%p%E%min + grnd()*(gen%p%E%max-gen%p%E%min)
-	     vertex%p%P = sqrt(vertex%p%E**2 - Mh2)
-	     vertex%p%delta = 100.*(vertex%p%P-spec%p%P)/spec%p%P
-	  endif
-	 
-	  
 	elseif (doing_rho) then
-	   call generate_rho(vertex,success) !generate rho in 4pi in CM
+	   call generate_rho(vertex,success)  !generate rho in 4pi in CM
 	   if(.not.success) then
 	      return
 	   else  ! we have a success, but set back to false for rest of complete_ev
@@ -1060,8 +1045,7 @@ C       DJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_ta
 	vertex%PmOop = (vertex%Pmx*oop_x + vertex%Pmy*oop_y) / sqrt(oop_x**2+oop_y**2)
 	vertex%PmPer = sqrt( max(0.d0, vertex%Pm**2 - vertex%PmPar**2 - vertex%PmOop**2 ) )
 
-!	if (debug(4)) changed by itabashi
-!	write(6,*)'comp_ev: at 9',vertex%Pmx,vertex%Pmy,vertex%Pmz
+	if (debug(4)) write(6,*)'comp_ev: at 9',vertex%Pmx,vertex%Pmy,vertex%Pmz
 
 ! Calculate Em, Pm, Mrec, Trec for all cases not already done.
 ! For doing_heavy, get Mrec from nu+M=Ep+Erec, and Erec**2=Mrec**2+Pm**2
@@ -1099,7 +1083,6 @@ C       DJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_ta
 	endif
 ! -----------------------------------------------------------------------------------------
 
-	
 	if (debug(5)) write(6,*) 'vertex%Pm,vertex%Trec,vertex%Em',vertex%Pm,vertex%Trec,vertex%Em
 	if (debug(4)) write(6,*)'comp_ev: at 10'
 
@@ -1142,8 +1125,6 @@ c	   if ((vertex%Emiss**2-vertex%Pmiss**2).lt.(Mp+Mpi0)**2) then
 	   endif
 	endif
 
-!	write(6,*)'Pm Em Pmiss, Emiss, MM',vertex%Pm,vertex%Em,vertex%Pmiss,vertex%Emiss,MM ! itatest 0616
-	
 
 ! Determine PHYSICS scattering angles theta/phi for the two spectrometer
 ! vectors, and the Jacobian which we must include in our xsec computation
@@ -1246,6 +1227,7 @@ C WB these calls are necessary otherwise the teff's in radc_init_ev are wrong
 ! Initialize
 
 	success = .false.
+
 	recon%Ein = Ebeam_vertex_ave	!lowered by most probable eloss (init.f)
 
 ! ... unit vector components of outgoing e,p
@@ -1496,10 +1478,11 @@ CDJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_targ) ang
 
 	if (doing_pion .or. doing_kaon .or. doing_delta .or. doing_rho .or. doing_semi) then
 	  recon%Em = recon%nu + targ%Mtar_struck - recon%p%E
-	  mm2 = recon%Em**2 - recon%Pm**2
+          mm2 = recon%Em**2 - recon%Pm**2
           mm  = sqrt(abs(mm2)) * abs(mm2)/mm2
           mmA2= (recon%nu + targ%M - recon%p%E)**2 - recon%Pm**2
           mmA = sqrt(abs(mmA2)) * abs(mmA2)/mmA2
+<<<<<<< HEAD
 
           mm_nnL2= (recon%nu + 2.808921112*1000. - recon%p%E)**2 - recon%Pm**2
           mm_nnL = sqrt(abs(mm_nnL2)) * abs(mm_nnL2)/mm_nnL2 - 2.9948138266*1000.
@@ -1514,6 +1497,8 @@ CDJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_targ) ang
           mm_3HL2= (recon%nu + 2.80941*1000. - recon%p%E)**2 - recon%Pm**2
           mm_3HL = sqrt(abs(mm_3HL2)) * abs(mm_3HL2)/mm_3HL2 - 2.99199*1000.
 !       write(6,*) 'reconEm,targMtar_struck,recon_p_E,mm',	  recon%Em,targ%Mtar_struck,recon%p%E,mm
+=======
+>>>>>>> 141b62a2ecafc56b267c4f62f650951fdf7c8528
           t = recon%Q2 - Mh2
      >      + 2*(recon%nu*recon%p%E - recon%p%P*recon%q*cos(recon%theta_pq))
 	  ntup%mm = mm
@@ -1530,7 +1515,6 @@ CDJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_targ) ang
 	   recon%zhad = recon%p%E/recon%nu
 	   recon%pt2 = recon%p%P**2*(1.0-cos(recon%theta_pq)**2)
 	endif
-
 
 ! Calculate Trec, Em. Trec for (A-1) system (eep), or for struck nucleon (pi/K)
 ! Note that there are other ways to calculate 'Em' for the pion/kaon case.
@@ -1638,9 +1622,7 @@ CDJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_targ) ang
 		 main%SF_weight = main%SF_weight+weight*nprot_theory(i)
 	      enddo		! <i=1,nrhoPm>
 	   ! endif
-	      write(6,*)'main_SF_weight ;use_sf',main%SF_weight,use_sf
 	endif
-
 ! ********************************************************************************
 
 ! ... if we have come up with weight<=, quit now (avoid weight<0 in ntuple)

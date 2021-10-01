@@ -392,7 +392,6 @@ c	call time (timestring2(11:23))
 ! ... put in the luminosity and efficiency factors
 
 	normfac = luminosity/ntried*nevent
-
 ! ... multiply in the relevant phase spaces (see event.f for description
 ! ... of generated variables.  Electron angles for all cases.
 ! ... add hadron angles and electron energy for all but H(e,e'p).
@@ -428,7 +427,6 @@ c	call time (timestring2(11:23))
 
 ! Close diagnostic ntuple file, if used
 
-	
 	if (Nntu.gt.0) call NtupleClose(filename)
 
 ! Calculate resolutions
@@ -1928,7 +1926,7 @@ c	recon.e.delta = (recon.e.P-spec.e.P)/spec.e.P*100.
 	   print *, 'recon_vertex: unknown spectrometer type : ', sp_type
 	   stop
 	endif
-
+	
 ! trajectory directions
 	th_t = sp%theta
 	ph_t = sp%phi

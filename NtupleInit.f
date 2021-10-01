@@ -14,7 +14,7 @@
 	parameter(name = 'SNT')
 	parameter(title = 'SIMTUPLE')
 	
-	data NtupleTag /80*' '/
+	data NtupleTag /200*' '/
 
 	NtupleID = defaultID
 	id = NtupleID
@@ -224,8 +224,13 @@
 	    m = m+1
 	    NtupleTag(m) = 'saghai'	! 54
 !	    NtupleTag(m) = 'Emiss'	! 54
+	    NtupleTag(m) = 'pathL_R' ! 54  PathL RHRS
 	    m = m+1
-	    NtupleTag(m) = 'factor' ! 55
+	    NtupleTag(m) = 'pathL_L' ! 55  PathL LHRS
+!	    m = m+1
+!	    NtupleTag(m) = 'saghai'	! 54
+!	    m = m+1
+!	    NtupleTag(m) = 'factor' ! 55
 !       added by itabashi
 	    m = m+1
 	    NtupleTag(m) = 'zposi' ! 56

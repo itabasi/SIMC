@@ -1,3 +1,4 @@
+<<<<<<< HEAD
  HRSr Trials:              10111605
  Col (Sieve) entr/exit            0           0
  Spec. entrance               54766
@@ -23,4 +24,25 @@
  S0, Cher, S2	            43439           0           0
  Calo. prl1, Calo. prl2            0           1
  Successes                   1000000
+=======
+ HMS Trials:                  54899
+ Slit hor/vert/corners        32692        7669        1780
+ Q1 entrance/mid/exit             0          41          79
+ Q2 entrance/mid/exit            95         624           0
+ Q3 entrance/mid/exit             0          34           6
+ Dipole entrance/exit            20        1429
+ Events reaching hut          10430
+ DC1, DC2, Scin, Cal              4          18         408           0
+ Successes                    10000
+
+ SOS Trials:                 370964
+ Slit hor/vert/corners        81437      161585       16384
+ Quad entrance/mid/exit           0           0          37
+ D1 entrance/exit              1730        3857
+ D2 entrance/exit             17044       28148
+ Vacuum exit                   2136
+ Events reaching hut          58606
+ DC1, DC2, Scin, Cal             20        2442        1245           0
+ Successes                    54899
+>>>>>>> 141b62a2ecafc56b267c4f62f650951fdf7c8528
 

@@ -535,17 +535,21 @@ C DJG:
 	if(doing_deutpi.or.doing_hepi.or.doing_deutkaon.or.doing_hekaon.or.doing_deutsemi) then
 	  if(doing_deutpi .or. doing_deutkaon .or. doing_deutsemi) open(1,file='deut.dat',status='old',form='formatted')
 	  if(doing_hepi .or. doing_hekaon) then
-	    if (nint(targ%A).eq.3) then
-	      open(1,file='he3.dat',status='old',form='formatted')
-	    else if (nint(targ%A).eq.4) then
-	      open(1,file='he4.dat',status='old',form='formatted')
-	    else if (nint(targ%A).eq.12) then
-	      open(1,file='c12.dat',status='old',form='formatted')
-	    else
-	      write(6,*) 'No Momentum Distribution for A = ',targ%A
-	      write(6,*) 'Defaulting to carbon momentum distribution'
-	      open(1,file='c12.dat',status='old',form='formatted')
-	    endif
+	     if (nint(targ%A).eq.3 .and. nint(targ%Z) .eq. 2) then
+		open(1,file='he3.dat',status='old',form='formatted')
+		write(6,*)'Read Fermi param file :',file
+	     else  if (nint(targ%A).eq.3 .and. nint(targ%Z) .eq. 1) then
+		write(6,*)'Read Fermi param file :',file
+		open(1,file='h3.dat',status='old',form='formatted')	
+	     else if (nint(targ%A).eq.4) then
+		open(1,file='he4.dat',status='old',form='formatted')
+	     else if (nint(targ%A).eq.12) then
+		open(1,file='c12.dat',status='old',form='formatted')
+	     else
+		write(6,*) 'No Momentum Distribution for A = ',targ%A
+		write(6,*) 'Defaulting to carbon momentum distribution'
+		open(1,file='c12.dat',status='old',form='formatted')
+	     endif
 	  endif
 	  do ii=1,2000
 	    read(1,*,end=999) pval(ii),mprob(ii)
@@ -601,9 +605,12 @@ C DJG:
 ! RCT 9/13/2016 Added this little piece of code that takes the neutron
 ! 3He distribution and uses it for the proton distribution in tritium.
 	  if ((nint(targ%A).eq.3).and.(nint(targ%Z).eq.1)) then
-	    call sf_lookup_init(tmpfile,.false.)                !the false flag calls the neutron S.F.	
+	     call sf_lookup_init(tmpfile,.false.)
+!       the false flag calls the neutron S.F.
+!	     call sf_lookup_init(tmpfile,.true.)  ! changed by itabashi as a test 0825
 	  else 
-	    call sf_lookup_init(tmpfile,.true.) 
+       call sf_lookup_init(tmpfile,.true.)
+!	     call sf_lookup_init(tmpfile,.false.) ! changed by itabashi as a test 0825
 	  endif
 
 !          if ((nint(targ%A).eq.3).and.(nint(targ%Z).eq.2)) then

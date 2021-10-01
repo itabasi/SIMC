@@ -20,7 +20,7 @@
  DOING_SEMI=F,
  DOING_HPLUS=T,
  DOING_RHO=F,
- DOING_DECAY=F,
+ DOING_DECAY=T,
  EXTRA_DBASE_FILE="extra_kaon.data                                             ",
  CTAU=  371.30000000000001     ,
  USE_SF=T,
