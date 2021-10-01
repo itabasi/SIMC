@@ -1296,6 +1296,7 @@ c	if (.not.success) stop 'COMPLETE_EV failed trying to complete a CENTRAL event!
 	    central%rad%g(i) = g(i)
 	  enddo
 	endif
+	  write(6,*) 'c(0:3)', central%rad%c
 	if (debug(4)) write(6,*)'calc_cent: at 1'
 
 c	do i = 1, neventfields
@@ -1615,6 +1616,7 @@ C DJG For spectrometers to the left of the beamline, need to pass ctheta,-stheta
 	main%RECON%p%yv = yv
 	main%RECON%p%xv = main%target%x
 	
+      !recon%Eloss = pp !okuyama
 	if (correct_Eloss) then
 	   if (standard_Eloss)then
 	      call trip_thru_target (3, zero, recon%p%E,
@@ -1623,6 +1625,7 @@ C DJG For spectrometers to the left of the beamline, need to pass ctheta,-stheta
 	      call trip_thru_target (3, zv, recon%p%E,
      >		    recon%p%theta, eloss_P_arm, r, Mh,4)
 	   endif
+       recon%p%Eloss = eloss_P_arm !okuyama
 	  recon%p%E = recon%p%E + eloss_P_arm
 	  recon%p%E = max(recon%p%E,sqrt(Mh2+0.000001)) !can get P~0 when calculating hadron momentum-->P<0 after eloss
 	  recon%p%P = sqrt(recon%p%E**2-Mh2)
@@ -1852,6 +1855,7 @@ C DJG For spectrometers to the left of the beamline, need to pass ctheta,-stheta
 	      call trip_thru_target (2, zv, recon%e%E, recon%e%theta,
      >                              eloss_E_arm, r, Me, 4)
 	   endif
+       recon%e%Eloss = eloss_E_arm !okuyama
 	   recon%e%E = recon%e%E + eloss_E_arm
 	endif
 c	recon%e%E = recon%e%E + targ%Coulomb%ave

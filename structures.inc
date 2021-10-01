@@ -99,6 +99,7 @@
                 sequence
 		real*8	delta,xptar,yptar,z
 		real*8	theta,phi,E,P
+		real*8  Eloss
 	end type
 
 	type cuts_true
@@ -121,6 +122,7 @@
 		real*8	epsilon, theta_pq, theta_rq, theta_tarq,phi_pq,phi_targ
 		real*8  beta, phi_s, phi_c
 		real*8  zhad,pt2,xbj
+		real*8  Eloss
 		type (arm_full):: e, p
 		type (Cartesian):: ue, up, uq
 	end type

@@ -9,7 +9,7 @@
 
  =?
  &EXPERIMENT
-     ngen  =  1000000					!  POS: # of successes
+     ngen  =  100000					!  POS: # of successes
      EXPER%charge  =  1.0				!  total charge (mC) for I = 25uA current and 1 day beam time
      doing_phsp  =  F					!  (T = TRUE)	- If all of the doing_* are
      doing_kaon  =  T					!  (T = TRUE)   false, then doing (e,e'p).

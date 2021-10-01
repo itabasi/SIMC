@@ -389,8 +389,10 @@ CDJG	    if (ntail.ne.0) Egamma_min(1) = gen.sumEgen.min - vertex.e.E
 	  endif
 
 ! ... radiate
+        !write(6,*)'before basicrad: Egamma_used(2)=',Egamma_used(2)
 	  call basicrad(2*peaked_basis_flag,Egamma_min(2),Egamma_max(2),
      >		Egamma_used(2),basicrad_weight,basicrad_val_reciprocal)
+        !write(6,*)'after basicrad: Egamma_used(2)=',Egamma_used(2)
 	  if (basicrad_weight.le.0) then
 !	    write(6,*)'gen_rad: Maybe you need to change Em limits!'
 !	    write(6,*)'min/max(2)=',egamma_min(2),egamma_max(2)
@@ -446,8 +448,10 @@ CDJG	    if (ntail.ne.0) Egamma_min(1) = gen.sumEgen.min - vertex.e.E
 	  endif
 
 ! ... radiate
+        write(6,*)'before basicrad: Egamma_used(3)=',Egamma_used(3)
 	  call basicrad(3*peaked_basis_flag,Egamma_min(3),Egamma_max(3),
      >		Egamma_used(3),basicrad_weight,basicrad_val_reciprocal)
+        write(6,*)'after basicrad: Egamma_used(3)=',Egamma_used(3)
 	  if (basicrad_weight.le.0) then
 	    if (debug(4)) write(6,*)'gen_rad: failed at 8'
 	    return
@@ -516,6 +520,9 @@ c	enddo
 	success = .true.
 
 	if (debug(2)) write(6,*)'gen_rad: exiting...'
+        !write(6,*)'end of basicrad(): Egamma_used(1)=',Egamma_used(1)
+        !write(6,*)'end of basicrad(): Egamma_used(2)=',Egamma_used(2)
+        !write(6,*)'end of basicrad(): Egamma_used(3)=',Egamma_used(3)
 	return
 	end
 

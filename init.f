@@ -48,19 +48,22 @@
 
 	energy = ebeam
 	call trip_thru_target (1,zero,energy,zero,targ%Eloss(1)%ave,
-     >                         targ%teff(1)%ave,Me,4)
+     >                         targ%teff(1)%ave,Me,1)
 	energy = Pe_cent
 	call trip_thru_target (2,zero,energy,the_cent,targ%Eloss(2)%ave,
-     >                         targ%teff(2)%ave,Me,4)
+     >                         targ%teff(2)%ave,Me,1)
 	energy = sqrt(Pp_cent**2 + Mh2)
 
 	call trip_thru_target (3,zero,energy,thp_cent,targ%Eloss(3)%ave,
-     >                         targ%teff(3)%ave,sqrt(Mh2),4)
+     >                         targ%teff(3)%ave,sqrt(Mh2),1)
 	if (.not.using_Eloss) then
 	  do i = 1, 3
 	    targ%Eloss(i)%ave = 0.0
 	  enddo
 	endif
+      write(6,*) 'targ%teff(1)=',targ%teff(1)%ave
+      write(6,*) 'targ%teff(2)=',targ%teff(2)%ave
+      write(6,*) 'targ%teff(3)=',targ%teff(3)%ave
 
 ! ... Coulomb potential energy (NB All of the following are positive)
 
@@ -797,6 +800,7 @@ c	exponentiate = use_expon
 
 	c_int(1) = lambda(1)/(e(1)*e(2))**(lambda(1)/2.)
 	c_int(2) = lambda(2)/(e(1)*e(2))**(lambda(2)/2.)
+      !write(6,*)'3/5**2=',3./5.**2.!==> 3/(5^2)
 
 *	csa NOTE: GN says these masses s/b Mp!
 

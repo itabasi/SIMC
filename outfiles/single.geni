@@ -1,26 +1,26 @@
- HRSr Trials:               3005111
- Col (Sieve) entr/exit      1574064           0
+ HRSr Trials:                     0
+ Col (Sieve) entr/exit            0           0
  Spec. entrance                   0
- Q1 entrance/mid/exit             0       11860      150639
- Q2 entrance/mid/exit             0           2           0
- Dipole entrance/exit        163109       67546
- Q3 entrance/mid/exit             0           8       20795
- Events reaching hut        1017088
+ Q1 entrance/mid/exit             0           0           0
+ Q2 entrance/mid/exit             0           0           0
+ Dipole entrance/exit             0           0
+ Q3 entrance/mid/exit             0           0           0
+ Events reaching hut              0
  VDC1, VDC2                       0           0
- S0, Cher, S2	           17084           0           2
- Calo. Ps, Calo. Sh               0           2
- Successes                  1000000
+ S0, Cher, S2	               0           0           0
+ Calo. Ps, Calo. Sh               0           0
+ Successes                        0
 
- HRSl Trials:                      0
- Col (Sieve) entr/exit             0           0
+ HRSl Trials:                2277268
+ Col (Sieve) entr/exit        971511           0
  Spec. entrance                    0
- Q1 entrance/mid/exit              0           0           0
+ Q1 entrance/mid/exit              0        8988       80148
  Q2 entrance/mid/exit              0           0           0
- Dipole entrance/exit              0           0
- Q3 entrance/mid/exit              0           0           0
- Events reaching hut               0
+ Dipole entrance/exit         101892       61697
+ Q3 entrance/mid/exit             50         226       29289
+ Events reaching hut         1023467
  VDC1, VDC2                        0           0
- S0, Cher, S2	                0           0           0
- Calo. prl1, Calo. prl2            0           0
- Successes                         0
+ S0, Cher, S2	            20346           0           0
+ Calo. prl1, Calo. prl2         3120           1
+ Successes                   1000000
 

@@ -124,6 +124,10 @@
 	real*8 grnd		!random # generator.
 	type(event_main):: main
 	type(event):: vertex, orig
+	real*8 theta_gen_cm ,phi_gen_cm, theta_gk
+	real*8 beta, gamma_f, E_cm, x_lab, y_lab, z_lab, x_cm, y_cm, z_cm, r_cm, r 
+	real*8 theta_gen_n1 ,theta_gen_d1, phi_gen_n, phi_gen_d
+	real*8 theta_gen_n2 ,theta_gen_d2
 	real*8 theta_gen ,phi_gen,x,y,z
 	logical ang_test
 	real*8 nsig_max
@@ -275,8 +279,8 @@ C modified 5/15/06 for poinct
 !!!!!!!!!!!!!!!!test by itabashi for accpectance 0624 !!!!!!!!!!!!!!!!!!!
 !!!     Generate theta and phi
 	
-	theta_gen = acos( -(2.0*grnd() -1.0)*grnd() );
-	phi_gen   = (2.0*acos(-1.0))*grnd()
+!	theta_gen = acos( -(2.0*grnd() -1.0)*grnd() );
+!	phi_gen   = (2.0*acos(-1.0))*grnd()
 !	vertex%e%xptar = theta_gen
 !	vertex%e%yptar = phi_gen
 !
@@ -291,7 +295,10 @@ C modified 5/15/06 for poinct
 	   ang_test= .true.
 	endif
 	do while(ang_test)
-	   theta_gen = acos( -(2.0*grnd()* -1.0)*grnd()); ! 0 to pi
+!	   theta_gen = acos( -(2.0*grnd()* -1.0)*grnd()); ! 0 to pi
+       theta_gen = -2222.0;
+       phi_gen = -2222.0;
+	   theta_gen = acos( 1.0-grnd()*(1.0-cos(0.1))); ! 0 to 0.1 !OKUYAMA
 	   phi_gen   = (2.0*acos(-1.0))*grnd() ! 0 to 2pi
 !       call spectrometer_angles(spec%e%theta,spec%e%phi,vertex%e%xptar,vertex%e%yptar,theta_gen,phi_gen)
 !	   call spectrometer_angles(spec%e%theta,spec%e%phi,vertex%e%xptar,vertex%e%yptar,theta_gen,phi_gen)
@@ -301,18 +308,18 @@ C modified 5/15/06 for poinct
 !	   x = vertex%e%xptar/gen%e%xptar%max
 !	   y = vertex%e%yptar/gen%e%yptar%max
 !	   if(sqrt(x*x + y*y) .le. 1.0) then
-	      
 !       if((vertex%e%xptar/vertex%e%xptar%max)**2 + (vertex%e%yptar/vertex%e%yptar%max)**2 .le. 1.0 ) then
-	      
 !       call spectrometer_angles(spec%e%theta,spec%e%phi,vertex%e%xptar,vertex%e%yptar,theta_gen,phi_gen)
 !	      ang_test =.false.
 !	   endif
 !	enddo
 !	      if(vertex%e%xptar .le. gen%e%xptar%max .and. vertex%e%xptar .ge . gen%e%xptar%min) then
 !       if(vertex%e%yptar .le. gen%e%yptar%max .and. vertex%e%yptar .ge. gen%e%yptar%min) then
-	   if(theta_gen .le. gen%e%xptar%max) then
+	   if(theta_gen .le. 0.1) then
 	      call spectrometer_angles(0.0,spec%e%phi,vertex%e%xptar,vertex%e%yptar,theta_gen,phi_gen)
 	      ang_test =.false.
+	      vertex%e%yptar=gen%e%yptar%min+grnd()*(gen%e%yptar%max-gen%e%yptar%min)
+	      vertex%e%xptar=gen%e%xptar%min+grnd()*(gen%e%xptar%max-gen%e%xptar%min)
 	   endif
 !       endif
 	enddo
@@ -334,13 +341,42 @@ C modified 5/15/06 for poinct
 	   ang_test= .true.
 	endif
 	do while(ang_test)
-	   theta_gen = acos( -(2.0*grnd()* -1.0)*grnd()); ! 0 to pi
+!  beta = 0.74
+!  gamma_f = 1/sqrt(1-beta*beta)
+       theta_gen = -2222.0;
+       phi_gen = -2222.0;
+	   theta_gen = acos( 1.0-grnd()*(1.0-cos(0.1))); ! 0 to 0.1 !OKUYAMA
+! theta_gen = acos( -(2.0*grnd()* -1.0)*grnd()) ! 0 to pi
 	   phi_gen   = (2.0*acos(-1.0))*grnd() ! 0 to 2pi
+!  theta_gk = 1.20*3.14/180.0
+!  x_cm = sin(theta_gen_cm)*cos(phi_gen_cm)
+!  y_cm = sin(theta_gen_cm)*sin(phi_gen_cm)
+!  z_cm = cos(theta_gen_cm)
+!  E_cm = 494/1800
+!  x_lab = sin(theta_gen_cm)*cos(phi_gen_cm)
+!  y_lab = sin(theta_gen_cm)*sin(phi_gen_cm)*cos(theta_gk)
+!  y_lab = y_lab - (gamma_f*beta*sqrt(1+E_cm*E_cm)+gamma_f*cos(theta_gk))*(sin(theta_gk))
+!  z_lab = sin(theta_gen_cm)*sin(phi_gen_cm)*sin(theta_gk)
+!  z_lab = z_lab + (gamma_f*beta*sqrt(1+E_cm*E_cm)+gamma_f*cos(theta_gk))*(cos(theta_gk))
+!  r_cm = sqrt(x_lab*x_lab+y_lab*y_lab+z_lab*z_lab)
+!  x_lab = x_lab/r_cm
+!  y_lab = y_lab/r_cm
+!  z_lab = z_lab/r_cm
+!  theta_gen = acos(z_lab)
+!  phi_gen = atan2(y_lab,x_lab)
 !       call spectrometer_angles(spec%p%theta,spec%p%phi,vertex%p%xptar,vertex%p%yptar,theta_gen,phi_gen)
-	   
 !       if(vertex%p%xptar .le. gen%p%xptar%max .and. vertex%p%xptar .ge . gen%p%xptar%min) then
 !       if(vertex%p%yptar .le. gen%p%yptar%max .and. vertex%p%yptar .ge. gen%p%yptar%min) then
-	   if(theta_gen .le. gen%p%xptar%max) then
+! write(6,*)'gen%p%xptar%max=', gen%p%xptar%max
+! write(6,*)'gen%p%xptar%in=', gen%p%xptar%min
+! write(6,*)'spec%p%phi=', spec%p%phi 
+! write(6,*)'theta_gen_cm=', theta_gen_cm 
+! write(6,*)'phi_gen_cm=', phi_gen_cm
+! write(6,*)'theta_gen=', theta_gen 
+! write(6,*)'phi_gen=', phi_gen 
+	   if(theta_gen .le. 0.1) then
+! write(6,*)'theta_gen=', theta_gen 
+! write(6,*)'phi_gen=', phi_gen 
 	      call spectrometer_angles(0.0,spec%p%phi,vertex%p%xptar,vertex%p%yptar,theta_gen,phi_gen)
 	      ang_test =.false.
 !       endif
@@ -1191,6 +1227,10 @@ C WB these calls are necessary otherwise the teff's in radc_init_ev are wrong
 	real*8 oop_x,oop_y
 	real*8 mm,mmA,mm2,mmA2,t
 	real*8 uPmx,uPmy, uPmz, cthrq
+	real*8 mm_nnL, mm_L, mm_S
+	real*8 mm_3HL
+	real*8 mm_nnL2, mm_L2, mm_S2
+	real*8 mm_3HL2
 	logical success
 	type(event)::	recon
 
@@ -1460,12 +1500,30 @@ CDJG Calculate the "Collins" (phi_pq+phi_targ) and "Sivers"(phi_pq-phi_targ) ang
           mm  = sqrt(abs(mm2)) * abs(mm2)/mm2
           mmA2= (recon%nu + targ%M - recon%p%E)**2 - recon%Pm**2
           mmA = sqrt(abs(mmA2)) * abs(mmA2)/mmA2
-!	  write(6,*) 'reconEm,targMtar_struck,recon_p_E,mm',	  recon%Em,targ%Mtar_struck,recon%p%E,mm
+
+          mm_nnL2= (recon%nu + 2.808921112*1000. - recon%p%E)**2 - recon%Pm**2
+          mm_nnL = sqrt(abs(mm_nnL2)) * abs(mm_nnL2)/mm_nnL2 - 2.9948138266*1000.
+	  
+          mm_L2= (recon%nu + 0.938272046*1000. - recon%p%E)**2 - recon%Pm**2
+          mm_L = sqrt(abs(mm_L2)) * abs(mm_L2)/mm_L2 - 1.115683*1000.
+
+          mm_S2= (recon%nu + 0.938272046*1000. - recon%p%E)**2 - recon%Pm**2
+          mm_S = sqrt(abs(mm_S2)) * abs(mm_S2)/mm_S2 - 1.192642*1000.
+
+
+          mm_3HL2= (recon%nu + 2.80941*1000. - recon%p%E)**2 - recon%Pm**2
+          mm_3HL = sqrt(abs(mm_3HL2)) * abs(mm_3HL2)/mm_3HL2 - 2.99199*1000.
+!       write(6,*) 'reconEm,targMtar_struck,recon_p_E,mm',	  recon%Em,targ%Mtar_struck,recon%p%E,mm
           t = recon%Q2 - Mh2
      >      + 2*(recon%nu*recon%p%E - recon%p%P*recon%q*cos(recon%theta_pq))
 	  ntup%mm = mm
 	  ntup%mmA = mmA
+	  ntup%mm_L = mm_L
+	  ntup%mm_S = mm_S
+	  ntup%mm_nnL = mm_nnL
+	  ntup%mm_3HL = mm_3HL
 	  ntup%t = t
+!	  write(6,*)'mm_3HL , ntup%mm_3HL ', mm_3HL,ntup%mm_3HL 
 	endif
 
 	if(doing_semi.or.doing_rho) then

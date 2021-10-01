@@ -9,7 +9,7 @@
 
  =?
  &EXPERIMENT
-     ngen  =  10000					!  POS: # of successes
+     ngen  =  1000					!  POS: # of successes
      EXPER%charge  =  1.0				!  total charge (mC) for I = 25uA current and 1 day beam time
      doing_phsp  =  F					!  (T = TRUE)	- If all of the doing_* are
      doing_kaon  =  T					!  (T = TRUE)   false, then doing (e,e'p).
@@ -23,24 +23,24 @@
 / 
  =?
  &KINEMATICS_MAIN
-     Ebeam = 3244.8                             !  (MeV)	 
+     Ebeam  =  4318.5                       	!  (MeV)
      dEbeam  =  0.05                          	!  beam energy variation (%)
-     electron_arm  =  1                         !  1=hms,2=sos,3=hrsr,4=hrsl,5 = shms
-     hadron_arm  =  2                           !  1=hms,2=sos,3=hrsr,4=hrsl,5 = shms
-     spec%e%P  =  1571.272                    	!  e arm central momentum (MeV/c)
-     spec%e%theta  = 14.92                	!  e arm angle setting (degrees)
-     spec%p%P  =  1292.58                    	!  p arm central momentum (MeV/c)
-     spec%p%theta  =  13.399                	!  p arm angle setting (degrees)
+     electron_arm  =  4                         !  1=hms,2=sos,3=hrsr,4=hrsl,5 = shms
+     hadron_arm  =  3                           !  1=hms,2=sos,3=hrsr,4=hrsl,5 = shms
+     spec%e%P  =  2218.0                    	!  e arm central momentum (MeV/c)
+     spec%e%theta  = 13.2                	!  e arm angle setting (degrees)
+     spec%p%P  =  1823.0                    	!  p arm central momentum (MeV/c)
+     spec%p%theta  =  13.2                	!  p arm angle setting (degrees)
 / 
 
  ?=
  &TARGET
      targ%A  =  3.0				!  target A
-     targ%Z  =  2.0				!  target Z
+     targ%Z  =  1.0				!  target Z
      targ%mass_amu  =  3.015481	                !  target mass in amu
      targ%mrec_amu  =  2.013554	        	!  recoil mass in amu (eep=A-1 system,pion=A-2)
-     targ%rho  =  0.0773467	        	!  target density (g/cm^3)
-     targ%thick  =  1933.6675			!  target thick (mg/cm^2)
+     targ%rho  =  0.003404	        	!  target density (g/cm^3)
+     targ%thick  =  85.1			!  target thick (mg/cm^2)
      targ%angle  =  0.		        	!  target angle (for solid target) (degrees)
      targ%abundancy  =  100.			!  target purity (%)
      targ%can  =  1                     	!  1=beer can (fpi), 2=pudding can (nucpi)
@@ -55,21 +55,21 @@
 / 
 
  &E_ARM_ACCEPT
-     SPedge%e%delta%min  =  -14.0		!  delta min (SPECTROMETER ACCEPTANC
-     SPedge%e%delta%max  =   14.0		!  delta max
-     SPedge%e%yptar%min  =  -60.0		!  yptar min = {TF} / 1000 (mrad)
-     SPedge%e%yptar%max  =   60.0		!  yptar max = {TF} / 1000
-     SPedge%e%xptar%min  =  -100.0		!  xptar min = {TF} / 1000 (mrad)
-     SPedge%e%xptar%max  =   100.0		!  xptar max = {TF} / 1000
+     SPedge%e%delta%min  =  -4.5		!  delta min (SPECTROMETER ACCEPTANC
+     SPedge%e%delta%max  =   4.5		!  delta max
+     SPedge%e%yptar%min  =  -30.0		!  yptar min = {TF} / 1000 (mrad)
+     SPedge%e%yptar%max  =   30.0		!  yptar max = {TF} / 1000
+     SPedge%e%xptar%min  =  -60.0		!  xptar min = {TF} / 1000 (mrad)
+     SPedge%e%xptar%max  =   60.0		!  xptar max = {TF} / 1000
 / 
 
  &P_ARM_ACCEPT
-     SPedge%p%delta%min  =  -22.0		!  delta min (SPECTROMETER ACCEPTANCE)
-     SPedge%p%delta%max  =   22.0		!  delta max
-     SPedge%p%yptar%min  =  -90.0		!  yptar min = {TF} / 1000 (mrad)
-     SPedge%p%yptar%max  =   90.0		!  yptar max = {TF} / 1000
-     SPedge%p%xptar%min  =  -50.0		!  xptar min = {TF} / 1000 (mrad)
-     SPedge%p%xptar%max  =   50.0		!  xptar max = {TF} / 1000
+     SPedge%p%delta%min  =  -4.5		!  delta min (SPECTROMETER ACCEPTANCE)
+     SPedge%p%delta%max  =   4.5		!  delta max
+     SPedge%p%yptar%min  =  -30.0		!  yptar min = {TF} / 1000 (mrad)
+     SPedge%p%yptar%max  =   30.0		!  yptar max = {TF} / 1000
+     SPedge%p%xptar%min  =  -60.0		!  xptar min = {TF} / 1000 (mrad)
+     SPedge%p%xptar%max  =   60.0		!  xptar max = {TF} / 1000
 / 
 
  &THEORY_CTRL

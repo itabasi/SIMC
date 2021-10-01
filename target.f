@@ -1,5 +1,5 @@
 	subroutine trip_thru_target (narm, zpos, energy, theta, Eloss, radlen,
-     &                               mass, typeflag)
+     &                     mass, typeflag)
 
 	implicit none
 	include 'simulate.inc' ! target information in target.inc
@@ -46,7 +46,8 @@
 	s_target = (targ%length/2. + zpos) / abs(cos(targ%angle))
 	if (liquid) then			!liquid target
 	  if (targ%can .eq. 1) then		!beer can (2.8 mil endcap)
-	    s_Al = s_Al + 0.0028*inch_cm
+	    !s_Al = s_Al + 0.013*inch_cm !okuyama !defautl: +0.0028*inch_cm
+	    s_Al = s_Al + 0.0311 !okuyama !default: +0.0028*inch_cm
 	  else if (targ%can .eq. 2) then	!pudding can (5 mil Al, for now)
 	    s_Al = s_Al + 0.0050*inch_cm
 	  endif
@@ -98,8 +99,11 @@
 	  s_mylar = 0.010*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	else if (electron_arm.eq.4) then			!HRS-L
-	  s_Al = 0.013*inch_cm
-	  s_air = 15
+	  !s_Al = 0.013*inch_cm*4.379 !4.379 !okuyama
+            s_Al = 0.0357/abs(sin(theta))
+            !s_Al = 0.0456/abs(sin(theta))!MAX
+	  !s_air = 15
+            s_air = 70.
  	  s_kevlar = 0.*inch_cm
 	  s_mylar = 0.010*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
@@ -111,7 +115,7 @@
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	endif
 	s_target = forward_path
-
+      !write(6,*) 'liquid? ',liquid !-->that was liquid (Mar. 30, 2021)
 	if (liquid) then
 	  if (targ%can .eq. 1) then		!beer can
 	    ! side_path = 1.325*inch_cm / abs(sin(theta)) ! regular cell in HallC
@@ -150,6 +154,8 @@ c	       stop
 	  endif
 
 	endif		
+        !s_Al = 0.000001 
+        !s_target = 0.000001 !okuyama
 
 ! ... compute distance in radiation lengths and energy loss
 	radlen = s_target/targ%X0_cm + s_Al/X0_cm_Al + s_air/X0_cm_air +
@@ -164,6 +170,7 @@ c	       stop
 	call enerloss_new(s_mylar,rho_mylar,Z_mylar,A_mylar,energy,mass,
      &                    typeflag,Eloss_mylar)
 	Eloss = Eloss_target + Eloss_Al + Eloss_air + Eloss_kevlar + Eloss_mylar
+      !write(6,*) 'Eloss = ',Eloss
 
 	return
 
@@ -183,8 +190,11 @@ c	       stop
 	  s_mylar = 0.003*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
 	else if (hadron_arm.eq.3) then				!HRS-R
-	  s_Al = 0.013*inch_cm
-	  s_air = 15
+	  !s_Al = 0.013*inch_cm*4.379 !4.379 !okuyama
+	  !s_air = 15
+	        s_air = 70.
+            s_Al = 0.0493/abs(sin(theta))
+            !s_Al = 0.0503/abs(sin(theta))!MAX
  	  s_kevlar = 0.*inch_cm
 	  s_mylar = 0.010*inch_cm
 	  forward_path = (targ%length/2.-zpos) / abs(cos(theta-targ%angle))
@@ -243,6 +253,8 @@ c	      stop
 	  endif
 
 	endif
+        !s_Al = 0.01
+        !s_target = 0.01 !okuyama
 
 ! ... compute energy losses
 
